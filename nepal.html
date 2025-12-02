@@ -41,7 +41,7 @@
         </div>
     </nav>
 
-    <div class="relative h-[60vh] flex items-center justify-center bg-gradient-to-r from-slate-900 to-slate-700">
+    <div class="relative h-[60vh] flex items-center justify-center bg-cover bg-center" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://images.pexels.com/photos/1054218/pexels-photo-1054218.jpeg?auto=compress&cs=tinysrgb&w=1600');">
         <div class="text-center text-white z-10 px-4">
             <h1 class="text-4xl md:text-6xl font-bold mb-4 drop-shadow-lg">Magical Nepal</h1>
             <p class="text-xl md:text-2xl text-gray-100 drop-shadow-md">Kathmandu • Chitwan • Pokhara (6 Nights / 7 Days)</p>
@@ -58,11 +58,28 @@
                     Experience the best of Nepal with this comprehensive 7-day tour. From the spiritual temples of Kathmandu to the wildlife of Chitwan and the majestic mountain views of Pokhara. Includes private sedan transfer and jungle activities.
                 </p>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                    <img src="https://placehold.co/600x400/orange/white?text=Kathmandu+Image" class="rounded-lg shadow-md w-full h-40 object-cover" alt="Kathmandu">
                     
-                    <img src="https://placehold.co/600x400/green/white?text=Chitwan+Image" class="rounded-lg shadow-md w-full h-40 object-cover" alt="Chitwan">
+                    <div class="relative h-48 rounded-lg overflow-hidden shadow-md group">
+                        <img src="https://images.pexels.com/photos/2104882/pexels-photo-2104882.jpeg?auto=compress&cs=tinysrgb&w=600" 
+                             class="w-full h-full object-cover group-hover:scale-110 transition duration-500" 
+                             alt="Kathmandu">
+                        <div class="absolute bottom-0 bg-black/60 text-white w-full p-2 text-center text-sm font-bold">Kathmandu</div>
+                    </div>
                     
-                    <img src="https://placehold.co/600x400/blue/white?text=Pokhara+Image" class="rounded-lg shadow-md w-full h-40 object-cover" alt="Pokhara">
+                    <div class="relative h-48 rounded-lg overflow-hidden shadow-md group">
+                        <img src="https://images.pexels.com/photos/1054201/pexels-photo-1054201.jpeg?auto=compress&cs=tinysrgb&w=600" 
+                             class="w-full h-full object-cover group-hover:scale-110 transition duration-500" 
+                             alt="Chitwan Nature">
+                        <div class="absolute bottom-0 bg-black/60 text-white w-full p-2 text-center text-sm font-bold">Chitwan</div>
+                    </div>
+                    
+                    <div class="relative h-48 rounded-lg overflow-hidden shadow-md group">
+                        <img src="https://images.pexels.com/photos/13022933/pexels-photo-13022933.jpeg?auto=compress&cs=tinysrgb&w=600" 
+                             class="w-full h-full object-cover group-hover:scale-110 transition duration-500" 
+                             alt="Pokhara">
+                        <div class="absolute bottom-0 bg-black/60 text-white w-full p-2 text-center text-sm font-bold">Pokhara</div>
+                    </div>
+
                 </div>
             </div>
 
@@ -76,6 +93,10 @@
                         <p class="text-gray-600 text-sm mt-2 leading-relaxed">
                             Arrive in Kathmandu - upon arrival our airport representative will meet, assist and transfer to Hotel. Welcome drink at hotel and proceed for briefing regarding the program. At evening visit <strong>Bouddha Stupa</strong> and <strong>Pashupatinath Temple</strong>. Overnight at hotel in Kathmandu.
                         </p>
+                        <ul class="mt-2 text-sm text-gray-500 list-disc pl-4 space-y-1">
+                            <li><strong>Bouddhanath Stupa:</strong> One of the largest stupas in the world, a hub of Tibetan Buddhism adorned with colorful prayer flags.</li>
+                            <li><strong>Pashupatinath Temple:</strong> A revered Hindu temple dedicated to Lord Shiva, located along the banks of the sacred Bagmati River.</li>
+                        </ul>
                     </div>
 
                     <div class="relative">
@@ -84,6 +105,7 @@
                         <p class="text-gray-600 text-sm mt-2 leading-relaxed">
                             After breakfast and early morning activities drive to Chitwan [Approx 180 km]. En-route visit to <strong>Manakamana Temple</strong>. Evening attend Tharu Cultural Dance show. Overnight stay at Hotel in Chitwan.
                         </p>
+                        <p class="mt-2 text-sm text-gray-500"><strong>Manakamana Temple:</strong> Accessible by cable car, this sacred shrine is dedicated to Goddess Bhagwati and offers stunning views of the Trishuli River. </p>
                     </div>
 
                     <div class="relative">
@@ -92,6 +114,7 @@
                         <p class="text-gray-600 text-sm mt-2 leading-relaxed">
                             Early in the morning after breakfast visit for Canoe and Elephant Breeding Center. After lunch proceed for <strong>Jungle Safari tour</strong> in Elephant or Jeep at Chitwan National Park. Overnight stay at hotel in Chitwan.
                         </p>
+                        <p class="mt-2 text-sm text-gray-500"><strong>Chitwan National Park:</strong> A UNESCO World Heritage Site renowned for its rich biodiversity, dense forests, and captivating wildlife.</p>
                     </div>
 
                     <div class="relative">
@@ -108,6 +131,13 @@
                         <p class="text-gray-600 text-sm mt-2 leading-relaxed">
                             Early morning drive to <strong>Sarangkot</strong> (approx 13 km) to enjoy sunrise view with magnificent mountain ranges. En-route visit Bindabasani temple. Drive back to hotel and after breakfast proceed for half-day sightseeing tour. Overnight stay at Hotel in Pokhara.
                         </p>
+                        <ul class="mt-2 text-sm text-gray-500 list-disc pl-4 space-y-1">
+                            <li><strong>Sarangkot:</strong> Famous for panoramic vistas of Annapurna and Dhaulagiri ranges.</li>
+                            <li><strong>Bindabasani Temple:</strong> A revered Hindu shrine dedicated to goddess Bindabasani.</li>
+                            <li><strong>Devi’s Falls:</strong> A mesmerizing waterfall that disappears underground.</li>
+                            <li><strong>Gupteshwor Cave:</strong> A mystical underground cave housing a sacred Shiva lingam.</li>
+                            <li><strong>Taal Barahi Temple:</strong> An ornate pagoda-style temple located on an island in Phewa Lake.</li>
+                        </ul>
                     </div>
 
                     <div class="relative">
