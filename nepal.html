@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nepal: Kathmandu, Chitwan, Pokhara | TravelBite</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: '#0f172a',
+                        accent: '#25D366',
+                        orange: '#f97316'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        html { scroll-behavior: smooth; }
+        .modal { transition: opacity 0.3s ease-in-out; opacity: 0; pointer-events: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); display: flex; align-items: center; justify-content: center; z-index: 50; }
+        .modal.active { opacity: 1; pointer-events: all; }
+    </style>
+</head>
+<body class="font-sans text-gray-800 bg-gray-50">
+
+    <nav class="fixed w-full z-40 bg-brand text-white py-4 px-6 shadow-md">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <a href="index.html">
+                <img src="https://res.cloudinary.com/dnelrkdxu/image/upload/w_600/v1763273295/TRAVEL_BITE_LOGO_FINAL_Orange-black-01_ztukjs.png" class="h-12 w-auto object-contain bg-white rounded-md p-1">
+            </a>
+            <a href="index.html" class="text-orange hover:text-white font-bold flex items-center gap-2">
+                <i class="fas fa-arrow-left"></i> Back to Home
+            </a>
+        </div>
+    </nav>
+
+    <!-- HERO with updated Magical Nepal background -->
+    <div class="relative h-[60vh] flex items-center justify-center bg-cover bg-center" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.pexels.com/photos/3286586/pexels-photo-3286586.jpeg?auto=compress&cs=tinysrgb&w=1600');">
+        <div class="text-center text-white z-10 px-4">
+            <h1 class="text-4xl md:text-6xl font-bold mb-4 drop-shadow-lg">Magical Nepal</h1>
+            <p class="text-xl md:text-2xl text-gray-100 drop-shadow-md">Kathmandu • Chitwan • Pokhara (6 Nights / 7 Days)</p>
+        </div>
+    </div>
+
+    <div class="max-w-7xl mx-auto px-6 py-12 grid grid-cols-1 lg:grid-cols-3 gap-12">
+        
+        <div class="lg:col-span-2 space-y-8">
+            
+            <div>
+                <h2 class="text-3xl font-bold text-brand mb-4">Trip Overview</h2>
+                <p class="text-gray-600 leading-relaxed mb-6">
+                    Experience the best of Nepal with this comprehensive 7-day tour. From the spiritual temples of Kathmandu to the wildlife of Chitwan and the majestic mountain views of Pokhara. Includes private sedan transfer and jungle activities.
+                </p>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    
+                    <!-- Kathmandu image updated -->
+                    <div class="relative h-48 rounded-lg overflow-hidden shadow-md group">
+                        <img src="https://images.pexels.com/photos/28159677/pexels-photo-28159677.jpeg?auto=compress&cs=tinysrgb&w=1200" class="w-full h-full object-cover group-hover:scale-110 transition duration-500" alt="Kathmandu cityscape at twilight">
+                        <div class="absolute bottom-0 bg-black/60 text-white w-full p-2 text-center text-sm font-bold">Kathmandu</div>
+                    </div>
+                    
+                    <!-- Chitwan image updated -->
+                    <div class="relative h-48 rounded-lg overflow-hidden shadow-md group">
+                        <img src="https://images.pexels.com/photos/10965840/pexels-photo-10965840.jpeg?auto=compress&cs=tinysrgb&w=1200" class="w-full h-full object-cover group-hover:scale-110 transition duration-500" alt="Asian elephant in Chitwan National Park">
+                        <div class="absolute bottom-0 bg-black/60 text-white w-full p-2 text-center text-sm font-bold">Chitwan</div>
+                    </div>
+                    
+                    <!-- Pokhara image updated -->
+                    <div class="relative h-48 rounded-lg overflow-hidden shadow-md group">
+                        <img src="https://images.pexels.com/photos/4411191/pexels-photo-4411191.jpeg?auto=compress&cs=tinysrgb&w=1200" class="w-full h-full object-cover group-hover:scale-110 transition duration-500" alt="Boat on Phewa Lake in Pokhara">
+                        <div class="absolute bottom-0 bg-black/60 text-white w-full p-2 text-center text-sm font-bold">Pokhara</div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div>
+                <h3 class="text-2xl font-bold text-brand mb-6 border-b pb-2">Day-wise Itinerary</h3>
+                <div class="space-y-10 border-l-2 border-orange pl-6 relative">
+                    
+                    <div class="relative">
+                        <span class="absolute -left-[35px] top-0 bg-orange text-white w-8 h-8 rounded-full flex items-center justify-center font-bold">1</span>
+                        <h4 class="font-bold text-lg text-brand">Arrival in Kathmandu</h4>
+                        <p class="text-gray-600 text-sm mt-2 leading-relaxed">
+                            Arrive in Kathmandu - upon arrival our airport representative will meet, assist and transfer to Hotel. Welcome drink at hotel and proceed for briefing regarding the program. At evening visit <strong>Bouddha Stupa</strong> and <strong>Pashupatinath Temple</strong>. Overnight at hotel in Kathmandu.
+                        </p>
+                        <ul class="mt-2 text-sm text-gray-500 list-disc pl-4 space-y-1">
+                            <li><strong>Bouddhanath Stupa:</strong> One of the largest stupas in the world, a hub of Tibetan Buddhism adorned with colorful prayer flags.</li>
+                            <li><strong>Pashupatinath Temple:</strong> A revered Hindu temple dedicated to Lord Shiva, located along the banks of the sacred Bagmati River.</li>
+                        </ul>
+                    </div>
+
+                    <div class="relative">
+                        <span class="absolute -left-[35px] top-0 bg-brand text-white w-8 h-8 rounded-full flex items-center justify-center font-bold">2</span>
+                        <h4 class="font-bold text-lg text-brand">Kathmandu to Chitwan Drive</h4>
+                        <p class="text-gray-600 text-sm mt-2 leading-relaxed">
+                            After breakfast and early morning activities drive to Chitwan [Approx 180 km]. En-route visit to <strong>Manakamana Temple</strong>. Evening attend Tharu Cultural Dance show. Overnight stay at Hotel in Chitwan.
+                        </p>
+                        <p class="mt-2 text-sm text-gray-500"><strong>Manakamana Temple:</strong> Accessible by cable car, this sacred shrine is dedicated to Goddess Bhagwati and offers stunning views of the Trishuli River. </p>
+                    </div>
+
+                    <div class="relative">
+                        <span class="absolute -left-[35px] top-0 bg-brand text-white w-8 h-8 rounded-full flex items-center justify-center font-bold">3</span>
+                        <h4 class="font-bold text-lg text-brand">Chitwan Safari Tour</h4>
+                        <p class="text-gray-600 text-sm mt-2 leading-relaxed">
+                            Early in the morning after breakfast visit for Canoe and Elephant Breeding Center. After lunch proceed for <strong>Jungle Safari tour</strong> in Elephant or Jeep at Chitwan National Park. Overnight stay at hotel in Chitwan.
+                        </p>
+                        <p class="mt-2 text-sm text-gray-500"><strong>Chitwan National Park:</strong> A UNESCO World Heritage Site renowned for its rich biodiversity, dense forests, and captivating wildlife.</p>
+                    </div>
+
+                    <div class="relative">
+                        <span class="absolute -left-[35px] top-0 bg-brand text-white w-8 h-8 rounded-full flex items-center justify-center font-bold">4</span>
+                        <h4 class="font-bold text-lg text-brand">Drive to Pokhara</h4>
+                        <p class="text-gray-600 text-sm mt-2 leading-relaxed">
+                            Early in the morning after breakfast drive to Pokhara [Approx 160 km]. Overnight stay at hotel in Pokhara.
+                        </p>
+                    </div>
+
+                    <div class="relative">
+                        <span class="absolute -left-[35px] top-0 bg-brand text-white w-8 h-8 rounded-full flex items-center justify-center font-bold">5</span>
+                        <h4 class="font-bold text-lg text-brand">Pokhara Full-Day Sightseeing Tour</h4>
+                        <p class="text-gray-600 text-sm mt-2 leading-relaxed">
+                            Early morning drive to <strong>Sarangkot</strong> (approx 13 km) to enjoy sunrise view with magnificent mountain ranges. En-route visit Bindabasani temple. Drive back to hotel and after breakfast proceed for half-day sightseeing tour. Overnight stay at Hotel in Pokhara.
+                        </p>
+                        <ul class="mt-2 text-sm text-gray-500 list-disc pl-4 space-y-1">
+                            <li><strong>Sarangkot:</strong> Famous for panoramic vistas of Annapurna and Dhaulagiri ranges.</li>
+                            <li><strong>Bindabasani Temple:</strong> A revered Hindu shrine dedicated to goddess Bindabasani.</li>
+                            <li><strong>Devi’s Falls:</strong> A mesmerizing waterfall that disappears underground.</li>
+                            <li><strong>Gupteshwor Cave:</strong> A mystical underground cave housing a sacred Shiva lingam.</li>
+                            <li><strong>Taal Barahi Temple:</strong> An ornate pagoda-style temple located on an island in Phewa Lake.</li>
+                        </ul>
+                    </div>
+
+                    <div class="relative">
+                        <span class="absolute -left-[35px] top-0 bg-brand text-white w-8 h-8 rounded-full flex items-center justify-center font-bold">6</span>
+                        <h4 class="font-bold text-lg text-brand">Pokhara to Kathmandu Drive</h4>
+                        <p class="text-gray-600 text-sm mt-2 leading-relaxed">
+                            Early in the morning after breakfast, drive back to Kathmandu and transfer to Hotel [Approx 200 km]. Overnight stay at Hotel in Kathmandu.
+                        </p>
+                    </div>
+
+                    <div class="relative">
+                        <span class="absolute -left-[35px] top-0 bg-brand text-white w-8 h-8 rounded-full flex items-center justify-center font-bold">7</span>
+                        <h4 class="font-bold text-lg text-brand">Departure</h4>
+                        <p class="text-gray-600 text-sm mt-2 leading-relaxed">
+                            Early in the morning after breakfast, transfer to the international airport for your onward departure flight.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 bg-gray-50 p-6 rounded-xl">
+                <div>
+                    <h4 class="font-bold text-green-600 mb-3"><i class="fas fa-check-circle"></i> Inclusions</h4>
+                    <ul class="text-sm space-y-2 text-gray-600 list-disc pl-4">
+                        <li>Welcome drink upon arrival</li>
+                        <li>Meals: Breakfast & Dinner at hotels</li>
+                        <li>Accommodation at respective hotels</li>
+                        <li><strong>Chitwan:</strong> Park permits, Elephant/Jeep Safari, Breeding Centre, Cannoning Ride, Tharu Program</li>
+                        <li>Private air conditioning Sedan car for transfers/sightseeing</li>
+                        <li>All applicable hotel & vehicle taxes</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold text-red-500 mb-3"><i class="fas fa-times-circle"></i> Exclusions</h4>
+                    <ul class="text-sm space-y-2 text-gray-600 list-disc pl-4">
+                        <li>Entrance Fees for Sightseeing Places</li>
+                        <li>Manakamana Ropeway tickets</li>
+                        <li>International / Domestic airfare & Nepal VISA</li>
+                        <li>Personal expenses (telephone, laundry, porterage)</li>
+                        <li>High season/Festival supplements</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <p class="text-xs text-gray-500 italic">*Note: Vehicle is used strictly as per itinerary and not for disposal. The package includes Jungle activities, along with all three courses of meals (Breakfast, Lunch and Dinner) only at Chitwan hotel.</p>
+
+        </div>
+
+        <div class="lg:col-span-1">
+            <div class="bg-white p-6 rounded-2xl shadow-xl sticky top-24 border border-gray-100">
+                <h3 class="text-xl font-bold text-brand mb-4">Choose Your Package</h3>
+                <p class="text-xs text-gray-400 mb-4">*Rates per person on Triple Sharing</p>
+                
+                <div class="space-y-6 mb-6">
+                    
+                    <div class="border p-4 rounded-lg hover:border-orange transition bg-gray-50">
+                        <div class="flex justify-between items-center mb-3 pb-2 border-b border-gray-200">
+                            <span class="font-bold text-brand text-sm">3 Star Normal</span>
+                            <span class="font-bold text-green-600 text-lg">₹ 26,500</span>
+                        </div>
+                        <div class="space-y-2">
+                            <div>
+                                <strong class="text-xs text-orange block uppercase">Kathmandu Hotels</strong>
+                                <span class="text-xs text-gray-600">Amala / Simal / Nirakar / Prime Suites (or similar)</span>
+                            </div>
+                            <div>
+                                <strong class="text-xs text-orange block uppercase">Pokhara Hotels</strong>
+                                <span class="text-xs text-gray-600">Utsab Himalaya / Snow Peak / Choice Inn (or similar)</span>
+                            </div>
+                            <div>
+                                <strong class="text-xs text-orange block uppercase">Chitwan Hotels</strong>
+                                <span class="text-xs text-gray-600">Safari Adventure Lodge / Wild Adventure Resort / Chitwan Paradise (or similar)</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="border-2 border-orange p-4 rounded-lg bg-orange/5 relative">
+                        <span class="absolute -top-3 right-4 bg-orange text-white text-[10px] px-2 py-0.5 rounded-full uppercase font-bold">Popular Choice</span>
+                        <div class="flex justify-between items-center mb-3 pb-2 border-b border-orange/20">
+                            <span class="font-bold text-brand text-sm">3 Star Premium</span>
+                            <span class="font-bold text-green-600 text-lg">₹ 27,650</span>
+                        </div>
+                        <div class="space-y-2">
+                            <div>
+                                <strong class="text-xs text-orange block uppercase">Kathmandu Hotels</strong>
+                                <span class="text-xs text-gray-600">Mandala Norling / Manang / Marshyangdi / Sabrina / Pabera Boutique</span>
+                            </div>
+                            <div>
+                                <strong class="text-xs text-orange block uppercase">Pokhara Hotels</strong>
+                                <span class="text-xs text-gray-600">Shaara / White Pearl / Queens Park (or similar)</span>
+                            </div>
+                            <div>
+                                <strong class="text-xs text-orange block uppercase">Chitwan Hotels</strong>
+                                <span class="text-xs text-gray-600">Earth Light / Royal Tiger Resort / Jungle Crowne (or similar)</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="border p-4 rounded-lg hover:border-orange transition bg-gray-50">
+                        <div class="flex justify-between items-center mb-3 pb-2 border-b border-gray-200">
+                            <span class="font-bold text-brand text-sm">4 Star Luxury</span>
+                            <span class="font-bold text-green-600 text-lg">₹ 31,750</span>
+                        </div>
+                        <div class="space-y-2">
+                            <div>
+                                <strong class="text-xs text-orange block uppercase">Kathmandu Hotels</strong>
+                                <span class="text-xs text-gray-600">Best Western Plus / Grand Hotel / Crowne Imperial</span>
+                            </div>
+                            <div>
+                                <strong class="text-xs text-orange block uppercase">Pokhara Hotels</strong>
+                                <span class="text-xs text-gray-600">Mount Kailash Resort / Atithi Resort / Hotel Sarowar</span>
+                            </div>
+                            <div>
+                                <strong class="text-xs text-orange block uppercase">Chitwan Hotels</strong>
+                                <span class="text-xs text-gray-600">Green Mansion / Landmark Forest Park / Park Safari Resort</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <button onclick="openModal('Booking: Nepal Package')" class="w-full bg-orange hover:bg-orange-600 text-white font-bold py-3 rounded-lg shadow-lg transition transform hover:scale-105">
+                    Book This Trip
+                </button>
+                
+                <p class="text-[11px] text-red-500 font-bold text-center mt-3 border border-red-100 bg-red-50 p-2 rounded">
+                    * All prices are Dynamic & Subject to Availability at the time of Bookings.
+                </p>
+
+                <div class="mt-4 text-center">
+                    <p class="text-xs text-gray-500">Need Customization?</p>
+                    <a href="https://wa.me/917990917576" target="_blank" class="text-green-600 font-bold text-sm hover:underline"><i class="fab fa-whatsapp"></i> Chat on WhatsApp</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <footer class="bg-brand text-white py-8 text-center text-sm">
+        <p>&copy; 2025 TravelBite. All Rights Reserved.</p>
+        <p class="text-xs text-gray-400 mt-2">Registered with Trademark, GST, Udyam & TAN</p>
+    </footer>
+
+    <div id="bookingModal" class="modal px-4">
+        <div class="bg-white rounded-2xl shadow-2xl max-w-md w-full p-8 relative">
+            
+            <button onclick="closeModal()" class="absolute top-4 right-4 text-gray-400 hover:text-gray-800">
+                <i class="fas fa-times text-xl"></i>
+            </button>
+
+            <h3 class="text-2xl font-bold mb-2 text-brand">Book Nepal Trip</h3>
+            <p class="text-gray-500 mb-6 text-sm">Fill details below and we will contact you via WhatsApp/Email.</p>
+
+            <form id="travelbite-form" action="https://api.web3forms.com/submit" method="POST" class="space-y-4">
+                <input type="hidden" name="access_key" value="a91f01d7-da94-4f1d-8c92-fc84eaa8d083">
+                <input type="hidden" name="subject" value="New NEPAL Booking Inquiry">
+                <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
+                
+                <input type="hidden" id="interest-subject" name="interest" value="Nepal Package">
+
+                <div>
+                    <label class="block text-xs font-bold text-gray-500 uppercase mb-1">Full Name</label>
+                    <input type="text" name="name" required class="w-full bg-gray-50 border border-gray-200 rounded-lg px-4 py-3 focus:outline-none focus:border-brand">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-gray-500 uppercase mb-1">Phone Number</label>
+                    <input type="tel" name="phone" required class="w-full bg-gray-50 border border-gray-200 rounded-lg px-4 py-3 focus:outline-none focus:border-brand">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-gray-500 uppercase mb-1">Travel Details</label>
+                    <textarea name="message" rows="3" placeholder="Travel dates, No. of guests, Preferred Hotel Category..." class="w-full bg-gray-50 border border-gray-200 rounded-lg px-4 py-3 focus:outline-none focus:border-brand"></textarea>
+                </div>
+                
+                <button id="form-submit-btn" type="submit" class="w-full bg-orange hover:bg-orange-600 text-white font-bold py-3 rounded-lg shadow-lg">
+                    Send Request
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        const modal = document.getElementById('bookingModal');
+        const hiddenInput = document.getElementById('interest-subject');
+
+        function openModal(interest) {
+            modal.classList.add('active');
+            hiddenInput.value = interest;
+        }
+
+        function closeModal() {
+            modal.classList.remove('active');
+        }
+
+        modal.addEventListener('click', function(e) {
+            if (e.target === modal) closeModal();
+        });
+
+        // Form Submission Logic
+        const form = document.getElementById("travelbite-form");
+        const submitBtn = document.getElementById("form-submit-btn");
+
+        async function handleSubmit(event) {
+            event.preventDefault();
+            submitBtn.disabled = true;
+            submitBtn.innerText = "Sending...";
+            const data = new FormData(event.target);
+
+            fetch(event.target.action, {
+                method: form.method,
+                body: data,
+                headers: { 'Accept': 'application/json' }
+            }).then(response => {
+                if (response.ok) {
+                    alert("Thank you! Your Nepal inquiry has been sent.");
+                    form.reset();
+                    closeModal();
+                } else {
+                    alert("Oops! There was a problem submitting your form");
+                }
+                submitBtn.disabled = false;
+                submitBtn.innerText = "Send Request";
+            }).catch(error => {
+                alert("Oops! There was a problem sending your message.");
+                submitBtn.disabled = false;
+                submitBtn.innerText = "Send Request";
+            });
+        }
+        form.addEventListener("submit", handleSubmit);
+    </script>
+</body>
+</html>
