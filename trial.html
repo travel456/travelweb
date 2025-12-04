@@ -3,193 +3,375 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Statue of Unity: Jungle Safari, Glow Garden | TravelBite</title>
+    <title>TravelBite | Your Journey Begins</title>
     
     <script src="https://cdn.tailwindcss.com"></script>
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
-                        brand: '#0f172a',
-                        accent: '#25D366',
-                        orange: '#f97316'
+                        brand: '#0f172a',   /* Dark Blue */
+                        accent: '#25D366',  /* WhatsApp Green */
+                        orange: '#f97316'   /* Orange for Buttons */
                     }
                 }
             }
         }
     </script>
+
     <style>
         html { scroll-behavior: smooth; }
+        
+        /* Modal Animation */
+        .modal {
+            transition: opacity 0.3s ease-in-out;
+            opacity: 0;
+            pointer-events: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 50;
+        }
+        .modal.active { opacity: 1; pointer-events: all; }
+        body.modal-open { overflow: hidden; }
+
+        /* Floating WhatsApp Button */
+        .float-whatsapp {
+            position: fixed;
+            width: 60px;
+            height: 60px;
+            bottom: 30px;
+            right: 30px;
+            background-color: #25d366;
+            color: #FFF;
+            border-radius: 50px;
+            text-align: center;
+            font-size: 30px;
+            box-shadow: 2px 2px 3px #999;
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.3s;
+        }
+        .float-whatsapp:hover { transform: scale(1.1); }
     </style>
 </head>
-<body class="font-sans text-gray-800 bg-gray-50">
+<body class="font-sans text-gray-800 bg-gray-50 overflow-x-hidden">
 
-    <nav class="fixed w-full z-40 bg-teal-700 text-white py-4 px-6 shadow-md">
+    <nav id="navbar" class="fixed w-full z-40 transition-all duration-300 py-4 px-6 bg-transparent text-white" data-aos="fade-down" data-aos-duration="1000">
         <div class="max-w-7xl mx-auto flex justify-between items-center">
-            <a href="index.html">
-                <img src="https://res.cloudinary.com/dnelrkdxu/image/upload/w_600/v1763273295/TRAVEL_BITE_LOGO_FINAL_Orange-black-01_ztukjs.png" class="h-12 w-auto object-contain bg-white rounded-md p-1">
-            </a>
-            <a href="index.html" class="text-white hover:text-orange-200 font-bold flex items-center gap-2 transition">
-                <i class="fas fa-arrow-left"></i> Back to Home
-            </a>
+            
+            <div class="flex items-center gap-3">
+                <img src="https://res.cloudinary.com/dnelrkdxu/image/upload/w_600/v1763273295/TRAVEL_BITE_LOGO_FINAL_Orange-black-01_ztukjs.png" 
+                     alt="TravelBite Logo" 
+                     class="h-16 md:h-20 w-auto object-contain bg-white rounded-md p-1 shadow-lg"> 
+            </div>
+
+            <div class="hidden md:flex space-x-8 font-medium drop-shadow-md">
+                <a href="#home" class="hover:text-orange transition">Home</a>
+                <a href="#packages" class="hover:text-orange transition">Packages</a>
+                <a href="#contact-footer" class="hover:text-orange transition">Contact</a>
+            </div>
+            
+            <button onclick="openModal('General Inquiry')" class="bg-orange hover:bg-orange-600 text-white px-6 py-2 rounded-full font-bold transition shadow-lg transform hover:scale-105">
+                Book Now
+            </button>
         </div>
     </nav>
 
-    <div class="relative h-[60vh] flex items-center justify-center bg-cover bg-center" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.pexels.com/photos/1108701/pexels-photo-1108701.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2');">
-        <div class="text-center text-white z-10 px-4">
-            <h1 class="text-4xl md:text-6xl font-bold mb-4 drop-shadow-lg">Statue of Unity</h1>
-            <p class="text-xl md:text-2xl text-gray-100 drop-shadow-md">Kevadia, Gujarat (2 Nights / 3 Days)</p>
-            <div class="mt-4 inline-block bg-red-600 text-white px-4 py-1 rounded-full text-sm font-bold shadow-lg">
-                <i class="fas fa-exclamation-circle"></i> Closed on Mondays
+    <header id="home" class="relative h-screen flex items-center justify-center text-center text-white bg-cover bg-center" 
+        style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?q=80&w=2070&auto=format&fit=crop');">
+        
+        <div class="relative z-10 px-4 max-w-4xl" data-aos="zoom-in" data-aos-duration="1500">
+            <h1 class="text-5xl md:text-7xl font-bold mb-6 leading-tight drop-shadow-lg">Your Journey Begins Here</h1>
+            <p class="text-lg md:text-xl mb-8 text-gray-200 drop-shadow-md">Best deals on flights, hotels, and holiday packages.</p>
+            <a href="#packages" class="bg-white text-brand px-8 py-3 rounded-full font-bold hover:bg-gray-100 transition shadow-xl inline-block transform hover:-translate-y-1">Explore Packages</a>
+        </div>
+    </header>
+
+    <section id="packages" class="py-24 px-6 max-w-7xl mx-auto">
+        <div class="text-center mb-12" data-aos="fade-up" data-aos-duration="1000">
+            <h2 class="text-4xl font-bold text-brand mb-4">Popular Destinations</h2>
+            <p class="text-gray-500">Pick from our top-rated holiday packages</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            
+            <a href="nepal.html" class="block group" data-aos="fade-up" data-aos-delay="100" data-aos-duration="1000">
+                <div class="bg-white rounded-2xl shadow-xl overflow-hidden hover:-translate-y-2 transition duration-300 h-full flex flex-col border border-gray-100">
+                    <div class="h-64 overflow-hidden relative">
+                        <span class="absolute top-4 right-4 bg-orange text-white text-xs font-bold px-3 py-1 rounded-full z-10 shadow">New</span>
+                        <img src="https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=600&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                    </div>
+                    <div class="p-6 flex flex-col flex-grow">
+                        <h3 class="text-2xl font-bold mb-2 group-hover:text-orange transition">Nepal</h3>
+                        <p class="text-gray-500 mb-4 text-sm">Kathmandu, Chitwan & Pokhara (7 Days)</p>
+                        <div class="mt-auto flex justify-between items-center">
+                            <div>
+                                <span class="text-xs text-gray-400 block">Starting From</span>
+                                <span class="text-xl font-bold text-green-600">₹ 26,500</span>
+                            </div>
+                            <span class="bg-brand text-white text-sm px-4 py-2 rounded-lg font-bold group-hover:bg-orange transition">View Details</span>
+                        </div>
+                    </div>
+                </div>
+            </a>
+
+            <a href="SOU.html" class="block group" data-aos="fade-up" data-aos-delay="150" data-aos-duration="1000">
+                <div class="bg-white rounded-2xl shadow-xl overflow-hidden hover:-translate-y-2 transition duration-300 h-full flex flex-col border border-gray-100">
+                    <div class="h-64 overflow-hidden relative">
+                        <span class="absolute top-4 right-4 bg-orange text-white text-xs font-bold px-3 py-1 rounded-full z-10 shadow">Trending</span>
+                        
+                        <img src="https://images.pexels.com/photos/1108701/pexels-photo-1108701.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Statue of Unity Mountains" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                    
+                    </div>
+                    <div class="p-6 flex flex-col flex-grow">
+                        <h3 class="text-2xl font-bold mb-2 group-hover:text-orange transition">Statue of Unity</h3>
+                        <p class="text-gray-500 mb-4 text-sm">Kevadia, Jungle Safari & Dam View (2 Days)</p>
+                        <div class="mt-auto flex justify-between items-center">
+                            <div>
+                                <span class="text-xs text-gray-400 block">Starting From</span>
+                                <span class="text-xl font-bold text-green-600">₹ 6,500</span>
+                            </div>
+                            <span class="bg-brand text-white text-sm px-4 py-2 rounded-lg font-bold group-hover:bg-orange transition">View Details</span>
+                        </div>
+                    </div>
+                </div>
+            </a>
+
+            <div class="bg-white rounded-2xl shadow-xl overflow-hidden cursor-pointer hover:-translate-y-2 transition duration-300" data-aos="fade-up" data-aos-delay="200" data-aos-duration="1000">
+                <img src="https://images.unsplash.com/photo-1573843981267-be1999ff37cd?q=80&w=600&auto=format&fit=crop" class="w-full h-64 object-cover">
+                <div class="p-6">
+                    <h3 class="text-2xl font-bold mb-2">Maldives</h3>
+                    <p class="text-gray-500 mb-4">Luxury Beach Vacation</p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-xl font-bold text-green-600">₹ 1,50,000/-</span>
+                        <button onclick="openModal('Booking: Maldives')" class="px-4 py-2 border border-brand text-brand rounded-lg font-bold hover:bg-brand hover:text-white transition">Details</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-2xl shadow-xl overflow-hidden cursor-pointer hover:-translate-y-2 transition duration-300" data-aos="fade-up" data-aos-delay="300" data-aos-duration="1000">
+                <img src="https://images.unsplash.com/photo-1546412414-e1885259563a?q=80&w=600&auto=format&fit=crop" class="w-full h-64 object-cover">
+                <div class="p-6">
+                    <h3 class="text-2xl font-bold mb-2">Dubai</h3>
+                    <p class="text-gray-500 mb-4">City of Gold & Future</p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-xl font-bold text-green-600">₹ 40,000/-</span>
+                        <button onclick="openModal('Booking: Dubai')" class="px-4 py-2 border border-brand text-brand rounded-lg font-bold hover:bg-brand hover:text-white transition">Details</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-2xl shadow-xl overflow-hidden cursor-pointer hover:-translate-y-2 transition duration-300" data-aos="fade-up" data-aos-delay="400" data-aos-duration="1000">
+                <img src="https://images.unsplash.com/photo-1467269204594-9661b134dd2b?q=80&w=600&auto=format&fit=crop" class="w-full h-64 object-cover">
+                <div class="p-6">
+                    <h3 class="text-2xl font-bold mb-2">Europe</h3>
+                    <p class="text-gray-500 mb-4">Discover History & Culture</p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-xl font-bold text-green-600">₹ 2,00,000/-</span>
+                        <button onclick="openModal('Booking: Europe')" class="px-4 py-2 border border-brand text-brand rounded-lg font-bold hover:bg-brand hover:text-white transition">Details</button>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
+    </section>
 
-    <div class="max-w-7xl mx-auto px-6 py-12 grid grid-cols-1 lg:grid-cols-3 gap-12">
-        
-        <div class="lg:col-span-2 space-y-8">
+    <footer id="contact-footer" class="bg-brand text-white py-16 px-6" data-aos="fade-in" data-aos-duration="1500">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12">
             
             <div>
-                <h2 class="text-3xl font-bold text-brand mb-4">Trip Overview</h2>
-                <p class="text-gray-600 leading-relaxed mb-6">
-                    Experience the world's tallest statue and the beautiful surroundings of Kevadia. This package includes the Viewing Gallery, Jungle Safari, Glow Garden, and a comfortable stay with meals.
+                <div class="flex items-center gap-2 mb-2">
+                    <img src="https://res.cloudinary.com/dnelrkdxu/image/upload/w_200/v1763273295/TRAVEL_BITE_LOGO_FINAL_Orange-black-01_ztukjs.png" class="h-10 w-auto bg-white rounded p-1">
+                    <h4 class="text-2xl font-bold">TravelBite</h4>
+                </div>
+
+                <p class="text-xs md:text-sm font-semibold text-green-400 mb-4 tracking-wide">
+                    <i class="fas fa-shield-alt text-orange mr-1"></i> Registered with Trademark, GST, Udyam & TAN
                 </p>
+
+                <p class="text-gray-400 mb-6 text-sm">Making your dream vacations come true with affordable packages and premium service.</p>
+                
+                <a href="https://chat.whatsapp.com/BAntY71uyAt1OW2Ip2hWAD" target="_blank" class="inline-flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-full font-bold text-sm transition transform hover:scale-105">
+                    <i class="fab fa-whatsapp text-lg"></i> Join WhatsApp Community
+                </a>
             </div>
 
             <div>
-                <h3 class="text-2xl font-bold text-brand mb-6 border-b pb-2">Day-wise Itinerary</h3>
-                <div class="space-y-10 border-l-2 border-orange pl-6 relative">
-                    
-                    <div class="relative">
-                        <span class="absolute -left-[35px] top-0 bg-orange text-white w-8 h-8 rounded-full flex items-center justify-center font-bold">1</span>
-                        <h4 class="font-bold text-lg text-brand">Arrival, Safari & SOU Visit</h4>
-                        <div class="mt-2 space-y-2 text-sm text-gray-600">
-                            <p><strong>11:00 AM:</strong> Check-in to Resort.</p>
-                            <p><strong>11:00 AM - 02:00 PM:</strong> Jungle Safari.</p>
-                            <p><strong>02:00 PM - 04:00 PM:</strong> Free time & Lunch (E-rickshaw drop available, lunch on own).</p>
-                            <p><strong>04:00 PM:</strong> Visit <strong>Statue of Unity</strong> Viewing Gallery.</p>
-                            <p><strong>07:00 PM:</strong> Narmada Aarti.</p>
-                            <p><strong>07:45 PM:</strong> Laser Show (Subject to availability).</p>
-                            <p><strong>08:00 PM - 10:30 PM:</strong> Dinner at Resort.</p>
-                        </div>
-                    </div>
-
-                    <div class="relative">
-                        <span class="absolute -left-[35px] top-0 bg-brand text-white w-8 h-8 rounded-full flex items-center justify-center font-bold">2</span>
-                        <h4 class="font-bold text-lg text-brand">Gardens & Eco Tour</h4>
-                        <div class="mt-2 space-y-2 text-sm text-gray-600">
-                            <p><strong>07:30 AM - 09:30 AM:</strong> Morning Breakfast.</p>
-                            <p><strong>09:30 AM - 12:00 PM:</strong> Free time (Optional: River Rafting/Cycling at extra charge).</p>
-                            <p><strong>12:00 PM - 08:00 PM:</strong> Tour of Butterfly Garden, Cactus Garden, Vishwa Van, Ekta Nursery, Dino Trail.</p>
-                            <p><strong>Evening:</strong> Visit the beautiful <strong>Glow Garden</strong>.</p>
-                        </div>
-                    </div>
-
-                    <div class="relative">
-                        <span class="absolute -left-[35px] top-0 bg-brand text-white w-8 h-8 rounded-full flex items-center justify-center font-bold">3</span>
-                        <h4 class="font-bold text-lg text-brand">Departure</h4>
-                        <p class="text-gray-600 text-sm mt-2 leading-relaxed">
-                            Morning breakfast at the resort. Check-out at 10:00 AM with happy memories.
-                        </p>
-                    </div>
-
-                </div>
+                <h4 class="text-xl font-bold mb-4 text-orange">Contact Us</h4>
+                <ul class="space-y-4 text-gray-300">
+                    <li class="flex items-start gap-3">
+                        <i class="fas fa-map-marker-alt mt-1 text-orange"></i>
+                        <span>
+                            Gala Argos 5th Floor,<br>
+                            Ellis Bridge Ahmedabad - 380006
+                        </span>
+                    </li>
+                    <li class="flex items-center gap-3">
+                        <i class="fas fa-phone-alt text-orange"></i>
+                        <a href="tel:+917990917576" class="hover:text-white transition">+91-7990917576</a>
+                    </li>
+                    <li class="flex items-center gap-3">
+                        <i class="fas fa-envelope text-orange"></i>
+                        <a href="mailto:info@travelbite.co.in" class="hover:text-white transition">info@travelbite.co.in</a>
+                    </li>
+                </ul>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 bg-gray-50 p-6 rounded-xl border border-gray-200">
-                <div>
-                    <h4 class="font-bold text-green-600 mb-3"><i class="fas fa-check-circle"></i> Inclusions</h4>
-                    <ul class="text-sm space-y-2 text-gray-600 list-disc pl-4">
-                        <li>SOU Viewing Gallery Tickets</li>
-                        <li>Jungle Safari & Glow Garden</li>
-                        <li>Butterfly, Cactus, Vishwa Van, Ekta Nursery</li>
-                        <li>Dino Trail, Valley of Flowers, Dam View</li>
-                        <li>Narmada Aarti & Laser Show (Subj to avail)</li>
-                        <li>Meals: Breakfast & Dinner</li>
-                        <li>Pvt E-Rickshaw (Internal Transfer)</li>
-                        <li>Pvt Kevadiya Rly Station Transfer</li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="font-bold text-red-500 mb-3"><i class="fas fa-times-circle"></i> Notes / Exclusions</h4>
-                    <ul class="text-sm space-y-2 text-gray-600 list-disc pl-4">
-                        <li>Lunch is not included.</li>
-                        <li>E-rickshaw valid for 8 hours (extra charge thereafter).</li>
-                        <li>River Rafting / Cycling optional.</li>
-                        <li>Prices dynamic & subject to availability.</li>
-                    </ul>
+            <div>
+                <h4 class="text-xl font-bold mb-4 text-orange">Follow Us</h4>
+                <div class="flex flex-wrap gap-4">
+                    <a href="https://www.instagram.com/travelwith.travelbite" target="_blank" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-pink-600 transition" title="Instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://www.facebook.com/travelwith.travelbite" target="_blank" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-blue-600 transition" title="Facebook">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="https://t.me/TravelBite" target="_blank" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-blue-400 transition" title="Telegram">
+                        <i class="fab fa-telegram-plane"></i>
+                    </a>
+                    <a href="https://in.linkedin.com/company/travelbite" target="_blank" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-blue-700 transition" title="LinkedIn">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
                 </div>
             </div>
-
         </div>
+        
+        <div class="border-t border-gray-800 mt-12 pt-8 text-center text-gray-500 text-sm">
+            &copy; 2025 TravelBite, All Rights Reserved.
+        </div>
+    </footer>
 
-        <div class="lg:col-span-1">
-            <div class="bg-white p-6 rounded-2xl shadow-xl sticky top-24 border border-gray-100">
-                <h3 class="text-xl font-bold text-brand mb-4">Package Options</h3>
-                <p class="text-xs text-gray-400 mb-4">*Rates per Couple | 2N 3D</p>
+    <a href="https://wa.me/917990917576" target="_blank" class="float-whatsapp" data-aos="zoom-in" data-aos-delay="1000">
+        <i class="fab fa-whatsapp my-float"></i>
+    </a>
+
+    <div id="bookingModal" class="modal px-4">
+        <div class="bg-white rounded-2xl shadow-2xl max-w-md w-full p-8 relative" id="modalContent">
+            
+            <button onclick="closeModal()" class="absolute top-4 right-4 text-gray-400 hover:text-gray-800">
+                <i class="fas fa-times text-xl"></i>
+            </button>
+
+            <h3 class="text-2xl font-bold mb-2 text-brand">Plan Your Trip</h3>
+            <p class="text-gray-500 mb-6 text-sm">Fill details below and we will contact you via WhatsApp/Email.</p>
+
+            <form id="travelbite-form" action="https://api.web3forms.com/submit" method="POST" class="space-y-4">
                 
-                <div class="space-y-6 mb-6">
-                    
-                    <div class="border p-4 rounded-lg hover:border-orange transition bg-gray-50">
-                        <div class="mb-2 border-b border-gray-200 pb-2">
-                            <span class="font-bold text-brand block">River View Tent Resort</span>
-                        </div>
-                        <div class="space-y-2 text-sm">
-                            <div class="flex justify-between">
-                                <span>Luxury Swiss AC Cottage</span>
-                                <span class="font-bold text-green-600">₹ 19,950</span>
-                            </div>
-                            <div class="flex justify-between">
-                                <span>With Bathtub</span>
-                                <span class="font-bold text-green-600">₹ 20,950</span>
-                            </div>
-                            <div class="flex justify-between">
-                                <span>Luxury Swiss AC Tent</span>
-                                <span class="font-bold text-green-600">₹ 23,450</span>
-                            </div>
-                            <p class="text-xs text-red-500 mt-1">*Fri/Sat: +₹500/night</p>
-                        </div>
-                    </div>
+                <input type="hidden" name="access_key" value="a91f01d7-da94-4f1d-8c92-fc84eaa8d083">
 
-                    <div class="border p-4 rounded-lg hover:border-orange transition bg-gray-50">
-                        <div class="mb-2 border-b border-gray-200 pb-2">
-                            <span class="font-bold text-brand block">The Fern Sardar Sarovar</span>
-                        </div>
-                        <div class="space-y-2 text-sm">
-                            <div class="flex justify-between">
-                                <span>Winter Green City View</span>
-                                <span class="font-bold text-green-600">₹ 23,800</span>
-                            </div>
-                            <div class="flex justify-between">
-                                <span>Winter Green River View</span>
-                                <span class="font-bold text-green-600">₹ 24,950</span>
-                            </div>
-                            <p class="text-xs text-red-500 mt-1">*Fri/Sat: +₹1,000/night</p>
-                        </div>
-                    </div>
+                <input type="hidden" name="subject" value="New TravelBite Inquiry">
 
-                    <div class="bg-blue-50 p-3 rounded text-xs text-gray-600">
-                        <strong>Extra Person Policy:</strong><br>
-                        Child (< 6yr): ₹1,350<br>
-                        Child (6-12yr): ₹3,350 - ₹3,850<br>
-                        Adult (> 12yr): ₹6,450
-                    </div>
+                <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
 
+                <input type="hidden" id="interest-subject" name="interest" value="General">
+
+                <div>
+                    <label class="block text-xs font-bold text-gray-500 uppercase mb-1">Full Name</label>
+                    <input type="text" name="name" required class="w-full bg-gray-50 border border-gray-200 rounded-lg px-4 py-3 focus:outline-none focus:border-brand">
                 </div>
-
-                <a href="https://wa.me/917990917576?text=Please%20share%20me%20the%20SOU%20package%20Details." 
-                   class="block w-full bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-4 rounded-full text-center shadow-lg transition transform hover:-translate-y-1">
-                    <i class="fab fa-whatsapp text-xl mr-2"></i> Book / Enquiry
-                </a>
-
+                <div>
+                    <label class="block text-xs font-bold text-gray-500 uppercase mb-1">Phone Number</label>
+                    <input type="tel" name="phone" required class="w-full bg-gray-50 border border-gray-200 rounded-lg px-4 py-3 focus:outline-none focus:border-brand">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-gray-500 uppercase mb-1">Travel Details</label>
+                    <textarea name="message" rows="3" placeholder="Dates, No. of people..." class="w-full bg-gray-50 border border-gray-200 rounded-lg px-4 py-3 focus:outline-none focus:border-brand"></textarea>
+                </div>
+                
+                <button id="form-submit-btn" type="submit" class="w-full bg-orange hover:bg-orange-600 text-white font-bold py-3 rounded-lg shadow-lg transform transition active:scale-95">
+                    Send Request
+                </button>
+            </form>
             </div>
-        </div>
-
     </div>
 
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <script>
+        // 1. Initialize Animations
+        AOS.init({
+            duration: 1000, // Animation speed (1 second)
+            once: true,     // Animate only once while scrolling down
+        });
+
+        // 2. Sticky Navbar Effect
+        window.addEventListener('scroll', function() {
+            const nav = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                nav.classList.add('bg-brand', 'shadow-md', 'py-2');
+                nav.classList.remove('bg-transparent', 'py-4');
+            } else {
+                nav.classList.add('bg-transparent', 'py-4');
+                nav.classList.remove('bg-brand', 'shadow-md', 'py-2');
+            }
+        });
+
+        // 3. Modal Open/Close Logic
+        const modal = document.getElementById('bookingModal');
+        const hiddenInput = document.getElementById('interest-subject');
+
+        function openModal(interest) {
+            modal.classList.add('active');
+            document.body.classList.add('modal-open');
+            hiddenInput.value = interest;
+        }
+
+        function closeModal() {
+            modal.classList.remove('active');
+            document.body.classList.remove('modal-open');
+        }
+
+        // Close when clicking outside the box
+        modal.addEventListener('click', function(e) {
+            if (e.target === modal) closeModal();
+        });
+
+        // 4. AJAX Form Submission
+        const form = document.getElementById("travelbite-form");
+        const submitBtn = document.getElementById("form-submit-btn");
+
+        async function handleSubmit(event) {
+            event.preventDefault(); // Stop page redirect
+            submitBtn.disabled = true;
+            submitBtn.innerText = "Sending...";
+            
+            const data = new FormData(event.target);
+
+            fetch(event.target.action, {
+                method: form.method,
+                body: data,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            }).then(response => {
+                if (response.ok) {
+                    alert("Thank you! Your inquiry has been sent successfully.");
+                    form.reset(); 
+                    closeModal(); 
+                } else {
+                    alert("Oops! There was a problem submitting your form");
+                }
+                submitBtn.disabled = false;
+                submitBtn.innerText = "Send Request";
+            }).catch(error => {
+                alert("Oops! There was a problem sending your message.");
+                submitBtn.disabled = false;
+                submitBtn.innerText = "Send Request";
+            });
+        }
+        form.addEventListener("submit", handleSubmit);
+
+    </script>
 </body>
 </html>
