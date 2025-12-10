@@ -24,6 +24,8 @@
     </script>
     <style>
         html { scroll-behavior: smooth; }
+        .modal { transition: opacity 0.3s ease-in-out; opacity: 0; pointer-events: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); display: flex; align-items: center; justify-content: center; z-index: 50; }
+        .modal.active { opacity: 1; pointer-events: all; }
     </style>
 </head>
 <body class="font-sans text-gray-800 bg-gray-50">
@@ -39,7 +41,9 @@
         </div>
     </nav>
 
-    <div class="relative h-[60vh] flex items-center justify-center bg-cover bg-center" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.pexels.com/photos/1108701/pexels-photo-1108701.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2');">
+    <div class="relative h-[60vh] flex items-center justify-center bg-gray-900 bg-no-repeat bg-center" 
+         style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://res.cloudinary.com/dnelrkdxu/image/upload/v1765391672/SOU_Image_bczjnh.jpg'); background-size: contain;">
+        
         <div class="text-center text-white z-10 px-4">
             <h1 class="text-4xl md:text-6xl font-bold mb-4 drop-shadow-lg">Statue of Unity</h1>
             <p class="text-xl md:text-2xl text-gray-100 drop-shadow-md">Kevadia, Gujarat (2 Nights / 3 Days)</p>
@@ -181,15 +185,114 @@
 
                 </div>
 
-                <a href="https://wa.me/917990917576?text=Please%20share%20me%20the%20SOU%20package%20Details." 
-                   class="block w-full bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-4 rounded-full text-center shadow-lg transition transform hover:-translate-y-1">
-                    <i class="fab fa-whatsapp text-xl mr-2"></i> Book / Enquiry
-                </a>
+                <button onclick="openModal('Booking: SOU Package')" class="w-full bg-orange hover:bg-orange-600 text-white font-bold py-3 rounded-lg shadow-lg transition transform hover:scale-105">
+                    Book / Inquire
+                </button>
+                
+                <p class="text-[11px] text-red-500 font-bold text-center mt-3 border border-red-100 bg-red-50 p-2 rounded">
+                    * All prices are Dynamic & Subject to Availability at the time of Bookings.
+                </p>
+
+                <div class="mt-4 text-center">
+                    <p class="text-xs text-gray-500">Need Customization?</p>
+                    <a href="https://wa.me/917990917576" target="_blank" class="text-green-600 font-bold text-sm hover:underline"><i class="fab fa-whatsapp"></i> Chat on WhatsApp</a>
+                </div>
 
             </div>
         </div>
 
     </div>
 
+    <footer class="bg-brand text-white py-8 text-center text-sm">
+        <p>&copy; 2025 TravelBite. All Rights Reserved.</p>
+        <p class="text-xs text-gray-400 mt-2">Registered with Trademark, GST, Udyam & TAN</p>
+    </footer>
+
+    <div id="bookingModal" class="modal px-4">
+        <div class="bg-white rounded-2xl shadow-2xl max-w-md w-full p-8 relative">
+            
+            <button onclick="closeModal()" class="absolute top-4 right-4 text-gray-400 hover:text-gray-800">
+                <i class="fas fa-times text-xl"></i>
+            </button>
+
+            <h3 class="text-2xl font-bold mb-2 text-brand">Book SOU Trip</h3>
+            <p class="text-gray-500 mb-6 text-sm">Fill details below and we will contact you via WhatsApp/Email.</p>
+
+            <form id="travelbite-form" action="https://api.web3forms.com/submit" method="POST" class="space-y-4">
+                <input type="hidden" name="access_key" value="a91f01d7-da94-4f1d-8c92-fc84eaa8d083">
+                <input type="hidden" name="subject" value="New SOU Booking Inquiry">
+                <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
+                
+                <input type="hidden" id="interest-subject" name="interest" value="SOU Package">
+
+                <div>
+                    <label class="block text-xs font-bold text-gray-500 uppercase mb-1">Full Name</label>
+                    <input type="text" name="name" required class="w-full bg-gray-50 border border-gray-200 rounded-lg px-4 py-3 focus:outline-none focus:border-brand">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-gray-500 uppercase mb-1">Phone Number</label>
+                    <input type="tel" name="phone" required class="w-full bg-gray-50 border border-gray-200 rounded-lg px-4 py-3 focus:outline-none focus:border-brand">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-gray-500 uppercase mb-1">Travel Details</label>
+                    <textarea name="message" rows="3" placeholder="Travel dates, No. of guests, Preferred Resort..." class="w-full bg-gray-50 border border-gray-200 rounded-lg px-4 py-3 focus:outline-none focus:border-brand"></textarea>
+                </div>
+                
+                <button id="form-submit-btn" type="submit" class="w-full bg-orange hover:bg-orange-600 text-white font-bold py-3 rounded-lg shadow-lg">
+                    Send Request
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        const modal = document.getElementById('bookingModal');
+        const hiddenInput = document.getElementById('interest-subject');
+
+        function openModal(interest) {
+            modal.classList.add('active');
+            hiddenInput.value = interest;
+        }
+
+        function closeModal() {
+            modal.classList.remove('active');
+        }
+
+        modal.addEventListener('click', function(e) {
+            if (e.target === modal) closeModal();
+        });
+
+        // Form Submission Logic
+        const form = document.getElementById("travelbite-form");
+        const submitBtn = document.getElementById("form-submit-btn");
+
+        async function handleSubmit(event) {
+            event.preventDefault();
+            submitBtn.disabled = true;
+            submitBtn.innerText = "Sending...";
+            const data = new FormData(event.target);
+
+            fetch(event.target.action, {
+                method: form.method,
+                body: data,
+                headers: { 'Accept': 'application/json' }
+            }).then(response => {
+                if (response.ok) {
+                    alert("Thank you! Your SOU inquiry has been sent.");
+                    form.reset();
+                    closeModal();
+                } else {
+                    alert("Oops! There was a problem submitting your form");
+                }
+                submitBtn.disabled = false;
+                submitBtn.innerText = "Send Request";
+            }).catch(error => {
+                alert("Oops! There was a problem sending your message.");
+                submitBtn.disabled = false;
+                submitBtn.innerText = "Send Request";
+            });
+        }
+        form.addEventListener("submit", handleSubmit);
+    </script>
 </body>
 </html>
